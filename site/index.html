@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<title>Explicit - Accessible tooltips without hassle</title>
+
+		<link
+			href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&family=Barlow+Condensed:wght@700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="../src/index.css" />
+		<link rel="stylesheet" href="style.css" />
+		<link rel="icon" type="image/png" href="favicon.png" />
+
+		<script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+
+		<meta property="og:title" content="Explicit" />
+		<meta
+			property="og:description"
+			content="Turn title attributes into tooltips to make them accessible on hover and focus"
+		/>
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://explicit.empreintedigitale.fr" />
+		<meta
+			property="og:image"
+			content="https://explicit.empreintedigitale.fr/img/logo.svg"
+		/>
+		<meta property="og:locale" content="en_EN" />
+
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@empr1tedigitale" />
+		<meta name="twitter:title" content="Explicit" />
+		<meta
+			name="twitter:description"
+			content="Turn title attributes into tooltips to make them accessible on hover and focus"
+		/>
+		<meta
+			name="twitter:image"
+			content="https://explicit.empreintedigitale.fr/img/logo.svg"
+		/>
+	</head>
+
+	<body>
+		<div id="app">
+			<div class="Container">
+				<header class="Header">
+					<h1 class="Header-title">Explicit</h1>
+
+					<a
+						href="https://empreintedigitale.fr"
+						title="Empreinte Digitale - Créateur de vos solutions numériques responsables"
+					>
+						<img
+							class="Header-empreinteLogo"
+							src="img/logo.svg"
+							alt="Empreinte Digitale - Créateur de vos solutions numériques responsables"
+						/>
+					</a>
+				</header>
+
+				<main role="main">
+					<div class="Hero">
+						<p>
+							Turn title attributes into tooltips to make them accessible
+							on hover and focus.
+						</p>
+						<p>
+							<a href="https://github.com/empreinte-digitale/explicit">
+								See the documentation on GitHub
+							</a>
+						</p>
+					</div>
+
+					<h2 class="Inset-title">Example</h2>
+
+					<p>
+						Try hovering or focusing the buttons below for a quick
+						preview:
+					</p>
+
+					<div class="Inset">
+						<div class="Tiles" data-explicit-container>
+							<button class="Tile Button" title="Title for A">A</button>
+							<button class="Tile Button" title="Title for B">B</button>
+							<button class="Tile Button" title="Title for C">C</button>
+							<button class="Tile Button" title="Title for D">D</button>
+							<button class="Tile Button" title="Title for E">E</button>
+							<button
+								class="Tile Button"
+								title="A surprisingly long title for F so you can see how the browser handle reflows"
+							>
+								F
+							</button>
+							<button
+								class="Tile Button"
+								title="A surprisingly long title for G so you can see how the browser handle reflows"
+							>
+								G
+							</button>
+							<button class="Tile Button" title="Title for H">H</button>
+							<button class="Tile Button" title="Title for I">I</button>
+							<button class="Tile Button" title="Title for J">J</button>
+							<button class="Tile Button" title="Title for K">K</button>
+							<button class="Tile Button" title="Title for L">L</button>
+						</div>
+					</div>
+
+					<h2 class="Inset-title">Accessibility</h2>
+
+					<p>
+						Explicit aims to make titles fully accessible by adhering to
+						the
+						<a
+							href="https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html"
+						>
+							WCAG guidelines on Content on Hover or Focus
+						</a>
+						.
+						<br />
+						Thus, explicit tooltips are :
+					</p>
+
+					<ul>
+						<li>
+							<em>Persistent,</em>
+							as they stay visible as long as the user focuses the
+							trigger element or the tooltip
+						</li>
+						<li>
+							<em>Hoverable,</em>
+							so the user can select the tooltip's text
+						</li>
+						<li>
+							<em>Dismissable,</em>
+							as they can be closed by pressing
+							<kbd>Escape</kbd>
+						</li>
+					</ul>
+
+					<h2 class="Inset-title">How it works</h2>
+
+					<p>
+						Explicit leverages the browser's layout engine by using CSS to
+						position tooltips.
+						<br />
+						First, a bit of JavaScript finds the area where there is the
+						most space available.
+						<br />
+						Then, a flex container is placed in that area, so the browser
+						can position the tooltip inside of it and properly handle edge
+						cases (i.e. when there is not enough space to fit the text on
+						one line).
+					</p>
+					<p>
+						Tooltips are painted on a dedicated compositing layer to
+						minimize unnecessary reflows and repaints.
+					</p>
+
+					<p>
+						You can see below how the container is positionned inside the
+						available space:
+					</p>
+
+					<div class="Inset">
+						<div class="Tiles ExplicitDebug" data-explicit-container>
+							<button class="Tile Button" title="Title for A">A</button>
+							<button class="Tile Button" title="Title for B">B</button>
+							<button class="Tile Button" title="Title for C">C</button>
+							<button class="Tile Button" title="Title for D">D</button>
+							<button class="Tile Button" title="Title for E">E</button>
+							<button
+								class="Tile Button"
+								title="A surprisingly long title for F so you can see how the browser handle reflows"
+							>
+								F
+							</button>
+							<button
+								class="Tile Button"
+								title="A surprisingly long title for G so you can see how the browser handle reflows"
+							>
+								G
+							</button>
+							<button class="Tile Button" title="Title for H">H</button>
+							<button class="Tile Button" title="Title for I">I</button>
+							<button class="Tile Button" title="Title for J">J</button>
+							<button class="Tile Button" title="Title for K">K</button>
+							<button class="Tile Button" title="Title for L">L</button>
+						</div>
+					</div>
+				</main>
+			</div>
+
+			<footer class="Footer" role="contentinfo">
+				<div class="Container">
+					<p>
+						<strong>Empreinte Digitale</strong>
+					</p>
+
+					<p></p>
+					<ul>
+						<li>
+							<a
+								href="https://empreintedigitale.fr"
+								title="Development (fr)"
+							>
+								Development
+							</a>
+						</li>
+						<li>
+							<a
+								href="https://accessibilitenumerique.empreintedigitale.fr"
+								title="Accessibility (fr)"
+							>
+								Accessibility
+							</a>
+						</li>
+						<li>
+							<a
+								href="https://cloud.empreintedigitale.fr"
+								title="Cloud (fr)"
+							>
+								Cloud
+							</a>
+						</li>
+						<li>
+							<a
+								href="https://rgpd.empreintedigitale.fr"
+								title="GDPR (fr)"
+							>
+								GDPR
+							</a>
+						</li>
+					</ul>
+					<ul>
+						<li>
+							<a href="mailto:contact@empreintedigitale.fr">E-mail</a>
+						</li>
+						<li>
+							<a href="https://twitter.com/empr1tedigitale">Twitter</a>
+						</li>
+						<li>
+							<a
+								href="https://linkedin.com/company/empreinte-digitale-angers"
+							>
+								LinkedIn
+							</a>
+						</li>
+						<li>
+							<a href="https://www.facebook.com/empr1tedigitale/">
+								Facebook
+							</a>
+						</li>
+						<li>
+							<a href="https://github.com/empreinte-digitale">GitHub</a>
+						</li>
+					</ul>
+					<p>
+						11 rue des Noyers
+						<br />
+						49000 Angers
+						<br />
+						France
+					</p>
+				</div>
+			</footer>
+		</div>
+
+		<script type="module" src="../src/browser.ts"></script>
+	</body>
+</html>
