@@ -54,6 +54,11 @@ export default (options: Partial<SetupOptions> = {}) => {
 		}
 
 		const title = trigger.getAttribute('title');
+
+		if (!title) {
+			return;
+		}
+
 		trigger.removeAttribute('title');
 		trigger.setAttribute('aria-describedby', tooltip.id);
 		trigger.setAttribute('data-explicit-title', title);
