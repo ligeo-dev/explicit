@@ -6,14 +6,15 @@
   "license": "MIT",
   "source": "src/index.ts",
   "module": "dist/explicit.mjs",
-  "browser": "dist/explicit.js",
+  "umd": "dist/explicit.js",
   "styles": "dist/explicit.css",
   "types": "dist/types.d.ts",
   "targets": {
     "module": {},
-    "browser": {
+    "umd": {
       "source": "src/browser.ts",
       "context": "browser",
+      "outputFormat": "global",
       "isLibrary": false,
       "optimize": true
     },
