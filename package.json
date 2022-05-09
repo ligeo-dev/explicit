@@ -29,7 +29,9 @@
   "scripts": {
     "start": "parcel --target site",
     "build": "rimraf ./dist ./public && parcel build --no-cache",
-    "build-site": "rimraf ./public && parcel build --target site"
+    "build-site": "rimraf ./public && parcel build --target site",
+    "version": "npm run build",
+    "postversion": "git push && git push --tags"
   },
   "devDependencies": {
     "@parcel/packager-ts": "^2.0.1",
