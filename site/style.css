@@ -1,51 +1,43 @@
 :root {
-	--base-font: 'Barlow', -apple-system, BlinkMacSystemFont, avenir next, avenir,
-		helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial,
-		sans-serif;
-	--headings-font: 'Barlow Condensed', -apple-system, BlinkMacSystemFont,
-		avenir next, avenir, helvetica neue, helvetica, Ubuntu, roboto, noto,
-		segoe ui, arial, sans-serif;
-	--gray: #a3b0bf;
-	--gray-light: #dde2e7;
-	--gray-lighter: #e8ecef;
-	--magenta: #d6084f;
+	--font: Ubuntu, -apple-system, BlinkMacSystemFont, avenir next, avenir,
+		segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto,
+		arial, sans-serif;
+	--surface: #fff;
+	--on-surface: #092632;
+	--contrast-surface: #092632;
+	--on-contrast-surface: #fff;
+	--magenta: #c48500;
 	--magenta-alt: #ab0d42;
 	--magenta-focus: #e90956;
 	--magenta-active: #c30748;
 	--cyan: #367591;
-	--cyan-alt: #245c73;
-	--cyan-dark: #1b3b4a;
-	--cyan-darker: #0b191f;
 	--cyan-lighter: #edf0f2;
-	--cyan-light: #abd0e0;
 	--cyan-overlay: rgba(54, 117, 145, 0.5);
 	--white: #fff;
-	--a11y-brand: #e3c0fa;
 	--unit: 1.5rem;
+	--spacing-y: calc(2 * var(--unit));
 }
 
-:focus {
-	outline: 2px solid var(--cyan);
+@media screen and (min-height: 30rem) {
+	:root {
+		--spacing-y: calc(3 * var(--unit));
+	}
 }
 
-::-moz-selection {
-	background: var(--cyan);
-	color: var(--white);
-}
-
-::selection {
-	background: var(--cyan);
-	color: var(--white);
+@media screen and (min-height: 45rem) {
+	:root {
+		--spacing-y: calc(4 * var(--unit));
+	}
 }
 
 html {
 	margin: 0;
 	padding: 0;
-	background: var(--white);
-	color: var(--cyan-alt);
+	background: var(--surface);
+	color: var(--on-surface);
 	line-height: 1.5;
 	font-size: 100%;
-	font-family: var(--base-font);
+	font-family: var(--font);
 }
 
 @media screen and (min-width: 30rem) {
@@ -62,7 +54,6 @@ body {
 h1,
 h2 {
 	margin: 0;
-	font-family: var(--headings-font);
 }
 
 p {
@@ -111,48 +102,39 @@ a:active {
 
 .Container {
 	box-sizing: border-box;
-	margin: 0 auto;
+	margin: auto;
 	padding-left: 1.5rem;
 	padding-right: 1.5rem;
 	max-width: 75ch;
 }
 
 .Header {
+	padding-top: var(--spacing-y);
+	color: rgb(38, 31, 13);
+	background: radial-gradient(
+			circle at 1.1rem 1.1rem,
+			rgba(38, 31, 13, 0.1) 0.15rem,
+			rgba(0, 0, 0, 0) 0.15rem,
+			rgba(0, 0, 0, 0) 100%
+		)
+		50% 0.5rem / 2.2rem 2.2rem fixed rgb(249, 224, 159);
+}
+
+.Header-inner {
 	display: flex;
-	flex-direction: column-reverse;
-	align-items: flex-start;
-	padding-top: calc(2 * var(--unit));
+	flex-direction: row-reverse;
+	align-items: center;
+	justify-content: flex-end;
+	gap: var(--unit);
 }
 
 .Header-title {
-	margin-top: calc(4 * var(--unit));
-	margin-bottom: calc(3 * var(--unit));
-	color: var(--cyan-dark);
-	text-align: center;
 	line-height: 1;
 	font-size: calc(2 * var(--unit));
+	line-height: 0.95;
 }
 
-@media screen and (min-width: 20rem) {
-	.Header-title {
-		font-size: calc(3 * var(--unit));
-	}
-}
-
-@media screen and (min-width: 30rem) {
-	.Header-title {
-		margin-left: calc(2 * var(--unit));
-		text-align: left;
-	}
-}
-
-@media screen and (min-height: 45rem) {
-	.Header-title {
-		margin-top: calc(5 * var(--unit));
-	}
-}
-
-.Header-empreinteLogo {
+.Header-logo {
 	display: block;
 	align-self: start;
 	height: calc(2 * var(--unit));
@@ -164,19 +146,27 @@ main {
 
 .Hero {
 	margin-bottom: calc(1.5 * var(--unit));
-	font-size: var(--unit);
+	padding: var(--spacing-y) 0;
+	color: rgb(38, 31, 13);
+	background: radial-gradient(
+			circle at 1.1rem 1.1rem,
+			rgba(38, 31, 13, 0.1) 0.15rem,
+			rgba(0, 0, 0, 0) 0.15rem,
+			rgba(0, 0, 0, 0) 100%
+		)
+		50% 0.5rem / 2.2rem 2.2rem fixed rgb(249, 224, 159);
+}
+
+.Hero-inner {
+	font-size: 1.25rem;
+	line-height: 1.2;
 }
 
 .Inset {
 	margin-bottom: var(--unit);
 	border-radius: calc(0.75 * var(--unit));
 	padding: var(--unit);
-	background: var(--gray-light);
-	background: linear-gradient(
-		112.5deg,
-		var(--gray-lighter) 0%,
-		var(--gray-light) 100%
-	);
+	background: rgba(249, 224, 159, 0.5);
 }
 
 @media screen and (min-width: 30rem) {
@@ -186,25 +176,11 @@ main {
 }
 
 .Inset-title {
-	margin-top: calc(4 * var(--unit));
-	margin-bottom: var(--unit);
-	color: var(--cyan-dark);
-	text-align: center;
-	line-height: 1;
+	margin-top: calc(2.5 * var(--unit));
+	margin-bottom: calc(1.5 * var(--unit));
+	line-height: 1.4;
 	font-size: var(--unit);
-}
-
-@media screen and (min-width: 30rem) {
-	.Inset-title {
-		margin-left: var(--unit);
-		text-align: left;
-	}
-}
-
-@media screen and (min-height: 45rem) {
-	.Inset-title {
-		margin-top: calc(5 * var(--unit));
-	}
+	font-weight: 700;
 }
 
 #privacyPolicy:target {
@@ -265,12 +241,8 @@ a.Tile:active {
 
 .Footer {
 	padding: calc(3 * var(--unit)) 0;
-	background: var(--a11y-brand);
-	background-image: linear-gradient(
-		112.5deg,
-		transparent 0%,
-		rgba(0, 0, 0, 0.1) 100%
-	);
+	background: var(--contrast-surface);
+	color: var(--on-contrast-surface);
 }
 
 .Footer p {
@@ -299,7 +271,7 @@ a.Tile:active {
 }
 
 .Footer a {
-	color: var(--cyan-alt);
+	color: #fff;
 }
 
 .ExplicitDebug .explicit-TooltipContainer {
