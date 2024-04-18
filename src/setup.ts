@@ -19,7 +19,7 @@ export default (options: Partial<SetupOptions> = {}) => {
 	const {container, hideDelay} = {...defaultOptions, ...options};
 
 	let tooltipped: HTMLElement = null;
-	let hideTimer: NodeJS.Timeout = null;
+	let hideTimer: number = null;
 
 	const tooltip = document.createElement('p');
 	tooltip.id = 'explicit-Tooltip';
