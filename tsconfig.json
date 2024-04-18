@@ -1,5 +1,5 @@
 {
 	"compilerOptions": {
-		"types": ["node"]
+		"lib": ["es2015", "dom"]
 	}
 }
