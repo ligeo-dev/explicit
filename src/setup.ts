@@ -82,7 +82,10 @@ export default (options: Partial<SetupOptions> = {}) => {
 	};
 
 	const handleFocusIn = (trigger: HTMLElement) => {
-		if (!container.contains(trigger)) {
+		if (
+			!container.contains(trigger) ||
+			trigger.closest('[data-explicit-ignore]')
+		) {
 			hide();
 			return;
 		}

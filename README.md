@@ -31,6 +31,22 @@ This delay allows the user to jump from an element to its tooltip if there is so
 </div>
 ```
 
+You may want to avoid showing tooltips on specific elements.
+This can be done with the `data-explicit-ignore` attribute:
+
+```html
+<a href="…" title="…" data-explicit-ignore></a>
+```
+
+Note that this can also be used to discard all elements inside a tag:
+
+```html
+<a href="…" title="Tooltip will be shown"></a>
+<div data-explicit-ignore>
+  <a href="…" title="Tooltip will not be shown"></a>
+</div>
+```
+
 ### NPM
 
 Just install the module and use it from your code:
