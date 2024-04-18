@@ -28,7 +28,7 @@
   },
   "scripts": {
     "start": "parcel --target site",
-    "build": "rimraf ./dist ./public && parcel build --no-cache",
+    "build": "rimraf ./dist ./public && parcel build --no-cache --target module --target umd --target styles --target types",
     "build-site": "rimraf ./public && parcel build --target site",
     "version": "npm run build",
     "postversion": "git push && git push --tags"
